@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>فهيم – معلمك الذكي للغة الإنجليزية</title>
+<title data-t>فهيم – معلمك الذكي للغة الإنجليزية</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* كل لوحة ألوان = درجتان (h للّون الأساسي، h2 للّون المميز). غيّر الأرقام لتصنع لوحتك */
@@ -90,6 +90,35 @@ a.sub:hover{transform:translateY(-3px);border-color:var(--brand)}
 .sub:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .done p{color:var(--mut)}
 @media (prefers-reduced-motion:reduce){.view.active,.typing span,.tick svg{animation:none}.tick svg{stroke-dashoffset:0}.btn{transition:none}}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.langbtn{font:inherit;font-weight:600;font-size:.9rem;padding:6px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.langbtn:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+:root[dir=rtl] .h1en,:root[dir=rtl] .logo small,:root[dir=rtl] .sub small,:root[dir=rtl] input.ltr{text-align:right}
+:root[dir=ltr] .h1en,:root[dir=ltr] .logo small,:root[dir=ltr] .sub small,:root[dir=ltr] input.ltr{text-align:left}
+:root[dir=ltr] .h1en.ar{letter-spacing:0;font-size:.42em}
+:root[dir=ltr] .logo small{letter-spacing:.14em}
+.info{margin-top:64px}
+.info h2{font-size:clamp(1.5rem,4vw,2.1rem)}
+.info h3{font-size:1.15rem;margin:30px 0 12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.stats div{background:var(--brand);color:var(--on-brand);border-radius:22px;padding:18px 14px;text-align:center}
+.stats b{display:block;font-size:clamp(1.8rem,6vw,2.8rem);line-height:1.2}
+.stats span{font-size:.92rem}
+.facts,.tracks{display:grid;gap:14px}
+@media(min-width:700px){.facts{grid-template-columns:repeat(2,1fr)}.tracks{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.tracks{grid-template-columns:repeat(4,1fr)}}
+.facts>div,.tracks>div{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.facts b,.tracks b{display:block;font-size:1.08rem;margin-bottom:6px}
+.facts p,.tracks p{margin:0 0 6px;color:var(--mut);font-size:.96rem}
+.tracks>div{border-top:4px solid var(--accent)}
+.note{font-size:.85rem;color:var(--mut);margin-top:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+.chip{font:inherit;font-weight:600;font-size:.95rem;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;transition:.15s}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.chip:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.gt{margin:20px 0 0;font-size:1rem;color:var(--mut);text-align:start}
+.done h3{margin:24px 0 0;font-size:1.15rem}
+.sub .adv{font-style:normal;font-size:.75rem;font-weight:600;margin-top:4px;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:0 10px;align-self:flex-start}
 </style>
 </head>
 <body>
@@ -100,13 +129,13 @@ a.sub:hover{transform:translateY(-3px);border-color:var(--brand)}
       <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="var(--brand)"/><path d="M24 11 6 20l18 9 18-9z" fill="var(--on-brand)"/><path d="M14 26v7c0 2.2 4.5 5 10 5s10-2.800 10-5v-7l-10 5z" fill="var(--on-brand)" opacity=".85"/><path d="M40 20v11" stroke="var(--accent)" stroke-width="2.600" stroke-linecap="round"/><circle cx="40" cy="33" r="2.800" fill="var(--accent)"/></svg>
       <div><b>فهيم</b><small>FAHEEM</small></div>
     </div>
-    <div class="pal" role="group" aria-label="اختر لوحة الألوان">
-      <span>الألوان</span>
+    <div class="tools"><button type="button" class="langbtn" id="lang">EN</button><div class="pal" role="group" aria-label="اختر لوحة الألوان">
+      <span data-i18n="colors">الألوان</span>
       <button type="button" data-p="indigo" aria-label="بنفسجي ونعناعي" style="background:linear-gradient(135deg,hsl(250 68% 50%) 50%,hsl(160 85% 58%) 50%)"></button>
       <button type="button" data-p="ocean" aria-label="أزرق وبرتقالي" style="background:linear-gradient(135deg,hsl(205 68% 44%) 50%,hsl(32 85% 58%) 50%)"></button>
       <button type="button" data-p="emerald" aria-label="أخضر ومرجاني" style="background:linear-gradient(135deg,hsl(160 68% 36%) 50%,hsl(12 85% 60%) 50%)"></button>
       <button type="button" data-p="rose" aria-label="وردي وكهرماني" style="background:linear-gradient(135deg,hsl(335 68% 48%) 50%,hsl(48 85% 56%) 50%)"></button>
-    </div>
+    </div></div>
   </nav>
 
   <div class="stepper" aria-hidden="true">
@@ -119,43 +148,65 @@ a.sub:hover{transform:translateY(-3px);border-color:var(--brand)}
   <section id="v1" class="view active" aria-labelledby="t1">
     <div class="hero">
       <div>
-        <h1 id="t1">فهيم بكالوريا<span class="h1en">FAHEEM BACCALAUREATE</span></h1>
-        <p class="lead">معلمك الذكي لكل مواد أولى بكالوريا. اختر المادة، اسأل، تدرّب، وصحّح أخطاءك خطوة بخطوة وبالعربية.</p>
-        <button class="btn" data-go="2">ابدأ الآن</button>
+        <h1 id="t1" data-i18n="h1">فهيم بكالوريا<span class="h1en">FAHEEM BACCALAUREATE</span></h1>
+        <p class="lead" data-i18n="lead">معلمك الذكي لكل مواد أولى بكالوريا. اختر المادة، اسأل، تدرّب، وصحّح أخطاءك خطوة بخطوة وبالعربية.</p>
+        <button class="btn" data-go="2" data-i18n="start">ابدأ الآن</button>
       </div>
       <div class="chat" aria-label="مثال على محادثة مع فهيم">
-        <div class="chat-h"><i></i> فهيم</div>
-        <div class="b me">ما الفرق بين <span class="en">make</span> و <span class="en">do</span>؟</div>
-        <div class="b ai">نقول <span class="en">make a cake</span> لأننا نصنع شيئًا جديدًا، ونقول <span class="en">do homework</span> لأنه عمل نؤديه.</div>
-        <div class="b me">جرّبني بجملة!</div>
+        <div class="chat-h"><i></i> <span data-i18n="brand">فهيم</span></div>
+        <div class="b me" data-i18n="c1">ما الفرق بين <span class="en">make</span> و <span class="en">do</span>؟</div>
+        <div class="b ai" data-i18n="c2">نقول <span class="en">make a cake</span> لأننا نصنع شيئًا جديدًا، ونقول <span class="en">do homework</span> لأنه عمل نؤديه.</div>
+        <div class="b me" data-i18n="c3">جرّبني بجملة!</div>
         <div class="b ai typing" aria-hidden="true"><span></span><span></span><span></span></div>
       </div>
     </div>
     <div class="feat">
-      <div><b>شرح بالعربية</b><span>يبسّط القواعد والمفردات بلغة تفهمها.</span></div>
-      <div><b>تدريب مستمر</b><span>أسئلة وتمارين على قدر مستواك.</span></div>
-      <div><b>تصحيح فوري</b><span>يوضح الخطأ ويعطيك الصيغة الصحيحة.</span></div>
+      <div><b data-i18n="f1t">شرح بالعربية</b><span data-i18n="f1d">يبسّط القواعد والمفردات بلغة تفهمها.</span></div>
+      <div><b data-i18n="f2t">تدريب مستمر</b><span data-i18n="f2d">أسئلة وتمارين على قدر مستواك.</span></div>
+      <div><b data-i18n="f3t">تصحيح فوري</b><span data-i18n="f3d">يوضح الخطأ ويعطيك الصيغة الصحيحة.</span></div>
     </div>
+    <section class="info" aria-labelledby="ti">
+      <h2 id="ti" data-i18n="i_h">عن نظام البكالوريا المصرية</h2>
+      <p class="lead" style="margin-bottom:0" data-i18n="i_p">نظام اختياري موازٍ للثانوية العامة، ولا يمكن التحويل منه إلى نظام آخر بعد الاختيار.</p>
+      <div class="stats">
+        <div><b>7</b><span data-i18n="i_s1">مواد دراسية</span></div>
+        <div><b dir="ltr">600</b><span data-i18n="i_s2">المجموع الكلي للشهادة</span></div>
+        <div><b dir="ltr">60%</b><span data-i18n="i_s3">أقل نسبة للنجاح</span></div>
+      </div>
+      <div class="facts">
+        <div><b data-i18n="st_t">المراحل الدراسية</b><p data-i18n="st_1">الصف الأول الثانوي: سنة تمهيدية ونقل عادية.</p><p data-i18n="st_2">الصفان الثاني والثالث: المرحلة الأساسية التي تؤهل درجاتهما للقبول بالجامعات.</p></div>
+        <div><b data-i18n="ex_t">فرص الامتحانات</b><p data-i18n="ex_1">الصف الثاني: امتحان إجباري في مايو بدون رسوم، وآخر اختياري في يوليو بمقابل 200 جنيه للمادة.</p><p data-i18n="ex_2">الصف الثالث: امتحان إجباري في يونيو، وآخر اختياري في أغسطس بمقابل 200 جنيه للمادة.</p></div>
+        <div><b data-i18n="q_t">شكل الأسئلة</b><p data-i18n="q_1">تبدأ امتحانات الصفين الثاني والثالث بنظام 50% اختيار من متعدد و50% أسئلة مقالية.</p></div>
+      </div>
+      <h3 data-i18n="tr_h">المسارات في الصفين الثاني والثالث الثانوي</h3>
+      <div class="tracks">
+        <div><b data-i18n="tr1t">الطب وعلوم الحياة</b><p data-i18n="tr1d">الثاني: الرياضيات أو الفيزياء. الثالث: أحياء + كيمياء (متقدم)</p></div>
+        <div><b data-i18n="tr2t">الهندسة وعلوم الحاسب</b><p data-i18n="tr2d">الثاني: الكيمياء أو البرمجة والذكاء الاصطناعي. الثالث: رياضيات + فيزياء (متقدم)</p></div>
+        <div><b data-i18n="tr3t">الأعمال</b><p data-i18n="tr3d">الثاني: المحاسبة أو إدارة الأعمال. الثالث: اقتصاد (متقدم) + رياضيات</p></div>
+        <div><b data-i18n="tr4t">الآداب والفنون</b><p data-i18n="tr4d">الثاني: علم النفس أو اللغة الأجنبية الثانية. الثالث: جغرافيا (متقدم) + إحصاء</p></div>
+      </div>
+      <p class="note" data-i18n="i_note">المعلومات حسب ما نُشر إعلاميًا وقد تتغير، فراجع إعلانات وزارة التربية والتعليم.</p>
+    </section>
   </section>
 
   <section id="v2" class="view" aria-labelledby="t2">
     <div class="card">
-      <h2 id="t2">أنشئ حسابك</h2>
-      <p style="color:var(--mut);margin:0">أدخل بياناتك لتبدأ مع فهيم.</p>
+      <h2 id="t2" data-i18n="h2">أنشئ حسابك</h2>
+      <p style="color:var(--mut);margin:0" data-i18n="sub2">أدخل بياناتك لتبدأ مع فهيم.</p>
       <form id="form" novalidate>
-        <div class="f"><label for="name">الاسم الكامل</label><input id="name" autocomplete="name" required><div class="err" data-for="name"></div></div>
+        <div class="f"><label for="name" data-i18n="l_name">الاسم الكامل</label><input id="name" autocomplete="name" required><div class="err" data-for="name"></div></div>
         <div class="row">
-          <div class="f"><label for="age">السن</label><input id="age" class="ltr" type="number" inputmode="numeric" min="12" max="20" required><div class="err" data-for="age"></div></div>
-          <div class="f"><label for="grade">الصف الدراسي</label><select id="grade" disabled><option>أولى ثانوي</option></select></div>
+          <div class="f"><label for="age" data-i18n="l_age">السن</label><input id="age" class="ltr" type="number" inputmode="numeric" min="12" max="20" required><div class="err" data-for="age"></div></div>
+          <div class="f"><label for="grade" data-i18n="l_grade">الصف الدراسي</label><select id="grade"><option value="1" data-i18n="o_g1">أولى ثانوي</option><option value="2" data-i18n="o_g2">ثانية ثانوي</option><option value="3" data-i18n="o_g3">ثالثة ثانوي</option></select></div>
         </div>
         <div class="row">
-          <div class="f"><label for="gov">المحافظة</label><select id="gov" disabled><option>القاهرة</option></select></div>
-          <div class="f"><label for="school">اسم المدرسة</label><input id="school" required><div class="err" data-for="school"></div></div>
+          <div class="f"><label for="gov" data-i18n="l_gov">المحافظة</label><select id="gov" disabled><option data-i18n="o_gov">القاهرة</option></select></div>
+          <div class="f"><label for="school" data-i18n="l_school">اسم المدرسة</label><input id="school" required><div class="err" data-for="school"></div></div>
         </div>
-        <div class="f"><label for="email">البريد الإلكتروني</label><input id="email" class="ltr" type="email" autocomplete="email" required><div class="err" data-for="email"></div></div>
-        <div class="f"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input id="consent" type="checkbox" style="width:22px;height:22px;margin-top:6px;flex:none;accent-color:var(--brand)"><span>أوافق على استخدام بياناتي لأغراض البحث التعليمي فقط، وعدم نشرها للغير.</span></label><div class="err" data-for="consent"></div></div>
+        <div class="f"><label for="email" data-i18n="l_email">البريد الإلكتروني</label><input id="email" class="ltr" type="email" autocomplete="email" required><div class="err" data-for="email"></div></div>
+        <div class="f"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input id="consent" type="checkbox" style="width:22px;height:22px;margin-top:6px;flex:none;accent-color:var(--brand)"><span data-i18n="consent">أوافق على استخدام بياناتي لأغراض البحث التعليمي فقط، وعدم نشرها للغير.</span></label><div class="err" data-for="consent"></div></div>
         <div class="err" id="formerr" role="alert"></div>
-        <div class="actions"><button class="btn" type="submit">إنشاء الحساب</button><button type="button" class="link" data-go="1">رجوع</button></div>
+        <div class="actions"><button class="btn" type="submit" data-i18n="submit">إنشاء الحساب</button><button type="button" class="link" data-go="1" data-i18n="back">رجوع</button></div>
       </form>
     </div>
   </section>
@@ -163,10 +214,13 @@ a.sub:hover{transform:translateY(-3px);border-color:var(--brand)}
   <section id="v3" class="view" aria-labelledby="t3">
     <div class="card done">
       <div class="tick"><svg viewBox="0 0 52 52"><path d="M12 27l10 10 18-20"/></svg></div>
-      <h2 id="t3">تم التسجيل بنجاح</h2>
-      <p>أهلًا <b id="who"></b>، حسابك جاهز. يمكنك الآن البدء مع فهيم.</p>
-      <h3 style="margin:22px 0 0;font-size:1.2rem">اختر المادة</h3>
-      <div class="subs" id="subs"></div>
+      <h2 id="t3" data-i18n="h3">تم التسجيل بنجاح</h2>
+      <p data-i18n="done">أهلًا <b id="who"></b>، حسابك جاهز. يمكنك الآن البدء مع فهيم.</p>
+      <h3 data-i18n="pick_y">اختر السنة</h3>
+      <div class="chips" id="years" role="group"></div>
+      <div id="trackbox" hidden><h3 data-i18n="pick_t">اختر المسار</h3><div class="chips" id="tracks" role="group"></div></div>
+      <h3 data-i18n="pick">اختر المادة</h3>
+      <div id="subs"></div>
     </div>
   </section>
   </main>
@@ -175,25 +229,80 @@ a.sub:hover{transform:translateY(-3px);border-color:var(--brand)}
 var FAHEEM_URL = "https://gemini.google.com/gem/1vy4mcdLzTdJ1mrhN3oVrWZARPxjdgnGD?usp=sharing";
 var SHEET_URL = "https://script.google.com/macros/s/AKfycbyzp28JDpCsSsJHQvEk7FkFbneXlX21xQ_W2qzI_IvX_EOv0rmvTAD7xsVe0XyT89Erzw/exec";
 /* المواد: أضف رابط كل مادة في url عند وصولك. الرابط الفارغ يظهر «قريبًا» */
-var SUBJECTS=[
- {ar:"اللغة الإنجليزية",en:"English",url:FAHEEM_URL},
- {ar:"اللغة العربية",en:"Arabic",url:""},
- {ar:"اللغة الأجنبية الثانية",en:"Second Language",url:""},
- {ar:"الرياضيات",en:"Mathematics",url:""},
- {ar:"الفيزياء",en:"Physics",url:""},
- {ar:"الكيمياء",en:"Chemistry",url:""},
- {ar:"الأحياء",en:"Biology",url:""},
- {ar:"التاريخ",en:"History",url:""},
- {ar:"الجغرافيا",en:"Geography",url:""},
- {ar:"الفلسفة والمنطق",en:"Philosophy & Logic",url:""}
+var TRACKS=[
+ {id:"med",ar:"الطب وعلوم الحياة",en:"Medicine & Life Sciences"},
+ {id:"eng",ar:"الهندسة وعلوم الحاسب",en:"Engineering & Computer Science"},
+ {id:"biz",ar:"الأعمال",en:"Business"},
+ {id:"art",ar:"الآداب والفنون",en:"Arts & Humanities"}
 ];
-var box=document.getElementById('subs');
-SUBJECTS.forEach(function(x){
-  var a=document.createElement(x.url?'a':'div'); a.className='sub'+(x.url?'':' off');
-  if(x.url){a.href=x.url;a.target='_blank';a.rel='noopener'}
-  a.innerHTML=x.ar+'<small>'+x.en+'</small>'+(x.url?'':'<em>قريبًا</em>');
-  box.appendChild(a);
-});
+/* المواد حسب قرار وزارة التربية والتعليم (أغسطس 2026). الإنجليزية = اللغة الأجنبية الأولى */
+var S={
+ arabic:{ar:"اللغة العربية",en:"Arabic"},
+ foreign1:{ar:"اللغة الإنجليزية (اللغة الأجنبية الأولى)",en:"English (First Foreign Language)"},
+ history:{ar:"التاريخ المصري",en:"Egyptian History"},
+ math:{ar:"الرياضيات",en:"Mathematics"},
+ science:{ar:"العلوم المتكاملة",en:"Integrated Science"},
+ phil:{ar:"الفلسفة والمنطق",en:"Philosophy & Logic"},
+ religion:{ar:"التربية الدينية",en:"Religious Education"},
+ foreign2:{ar:"اللغة الأجنبية الثانية",en:"Second Foreign Language"},
+ prog:{ar:"البرمجة وعلوم الحاسب",en:"Programming & Computer Science"},
+ physics:{ar:"الفيزياء",en:"Physics"},
+ chem:{ar:"الكيمياء",en:"Chemistry"},
+ progai:{ar:"البرمجة والذكاء الاصطناعي",en:"Programming & AI"},
+ acc:{ar:"المحاسبة",en:"Accounting"},
+ bus:{ar:"إدارة الأعمال",en:"Business Administration"},
+ psy:{ar:"علم النفس",en:"Psychology"},
+ bio_a:{ar:"الأحياء (مستوى متقدم)",en:"Biology (Advanced)"},
+ chem_a:{ar:"الكيمياء (مستوى متقدم)",en:"Chemistry (Advanced)"},
+ math_a:{ar:"الرياضيات (مستوى متقدم)",en:"Mathematics (Advanced)"},
+ phys_a:{ar:"الفيزياء (مستوى متقدم)",en:"Physics (Advanced)"},
+ econ_a:{ar:"الاقتصاد (مستوى متقدم)",en:"Economics (Advanced)"},
+ geo_a:{ar:"الجغرافيا (مستوى متقدم)",en:"Geography (Advanced)"},
+ stats:{ar:"الإحصاء",en:"Statistics"}
+};
+/* روابط المواد: المفتاح = اسم المادة-رقم السنة، مثل "math-1" */
+var U={"foreign1-1":FAHEEM_URL};
+var PICK={med:["math","physics"],eng:["chem","progai"],biz:["acc","bus"],art:["psy","foreign2"]};
+var Y3={med:["bio_a","chem_a"],eng:["math_a","phys_a"],biz:["econ_a","math"],art:["geo_a","stats"]};
+/* كل مجموعة: عنوانها ومواد كل منها ملاحظة اختيارية */
+function plan(y,tr){
+  if(y===1)return [
+    {k:"g_core",l:["arabic","foreign1","history","math","science","phil"]},
+    {k:"g_out",l:["religion","foreign2","prog"],n:"n_out"}];
+  if(y===2)return [
+    {k:"g_core",l:["arabic","foreign1","history"]},
+    {k:"g_pick",l:PICK[tr],n:"n_pick"}];
+  return [
+    {k:"g_spec",l:Y3[tr]},
+    {k:"g_out",l:["religion"],n:"n_rel"}];
+}
+var sel={y:1,t:"med"};
+function chip(txt,on,fn){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=txt;b.setAttribute('aria-pressed',String(on));b.addEventListener('click',fn);return b}
+function renderYears(){
+  var box=document.getElementById('years'); box.innerHTML='';
+  [1,2,3].forEach(function(n){box.appendChild(chip(t('y'+n),sel.y===n,function(){sel.y=n;renderAll()}))});
+}
+function renderTracks(){
+  var tb=document.getElementById('trackbox'), box=document.getElementById('tracks');
+  tb.hidden=sel.y===1; box.innerHTML='';
+  TRACKS.forEach(function(x){box.appendChild(chip(lang==='ar'?x.ar:x.en,sel.t===x.id,function(){sel.t=x.id;renderAll()}))});
+}
+function renderSubs(){
+  var box=document.getElementById('subs'); box.innerHTML='';
+  plan(sel.y,sel.t).forEach(function(g){
+    var h=document.createElement('h4');h.className='gt';h.textContent=t(g.k);box.appendChild(h);
+    var grid=document.createElement('div');grid.className='subs';
+    g.l.forEach(function(k){
+      var x=S[k],url=U[k+'-'+sel.y]||'';
+      var a=document.createElement(url?'a':'div'); a.className='sub'+(url?'':' off');
+      if(url){a.href=url;a.target='_blank';a.rel='noopener'}
+      a.innerHTML=(lang==='ar'?x.ar:x.en)+'<small>'+(lang==='ar'?x.en:x.ar)+'</small>'+(g.n?'<em class="adv">'+t(g.n)+'</em>':'')+(url?'':'<em>'+t('soon')+'</em>');
+      grid.appendChild(a);
+    });
+    box.appendChild(grid);
+  });
+}
+function renderAll(){renderYears();renderTracks();renderSubs()}
 
 /* لوحات الألوان */
 var root=document.documentElement, pbtn=document.querySelectorAll('.pal button');
@@ -229,22 +338,121 @@ document.getElementById('form').addEventListener('submit',function(e){
       school=document.getElementById('school').value.trim(),
       email=document.getElementById('email').value.trim(), ok=true, first=null;
   function chk(id,bad,msg){setErr(id,bad?msg:'');if(bad){ok=false;first=first||id}}
-  chk('name',name.split(/\s+/).length<2,'اكتب اسمك الكامل (الاسم الأول والثاني على الأقل).');
-  chk('age',!(age>=12&&age<=20),'اكتب سنًا صحيحًا بين 12 و 20.');
-  chk('school',school.length<3,'اكتب اسم المدرسة.');
-  chk('email',!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),'اكتب بريدًا إلكترونيًا صحيحًا مثل name@example.com');
-  chk('consent',!document.getElementById('consent').checked,'يجب الموافقة للمتابعة.');
+  chk('name',name.split(/\s+/).length<2,t('e_name'));
+  chk('age',!(age>=12&&age<=20),t('e_age'));
+  chk('school',school.length<3,t('e_school'));
+  chk('email',!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),t('e_email'));
+  chk('consent',!document.getElementById('consent').checked,t('e_consent'));
   if(!ok){document.getElementById(first).focus();return}
   var btn=document.querySelector('#form .btn'), fe=document.getElementById('formerr');
-  function next(){document.getElementById('who').textContent=name.split(/\s+/)[0];show(3)}
+  function next(){sel.y=+document.getElementById('grade').value;renderAll();firstName=name.split(/\s+/)[0];document.getElementById('who').textContent=firstName;show(3)}
   if(!SHEET_URL){next();return}
-  var data={name:name,age:age,grade:'أولى ثانوي',governorate:'القاهرة',school:school,email:email};
-  fe.textContent='';btn.disabled=true;btn.textContent='جارٍ الحفظ...';
-  var ctl=new AbortController(),t=setTimeout(function(){ctl.abort()},12000);
+  var data={name:name,age:age,grade:['أولى ثانوي','ثانية ثانوي','ثالثة ثانوي'][+document.getElementById('grade').value-1],governorate:'القاهرة',school:school,email:email};
+  fe.textContent='';btn.disabled=true;btn.textContent=t('saving');
+  var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort()},12000);
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(data),signal:ctl.signal})
-    .then(function(){clearTimeout(t);btn.disabled=false;btn.textContent='إنشاء الحساب';next()})
-    .catch(function(){clearTimeout(t);btn.disabled=false;btn.textContent='إنشاء الحساب';fe.textContent='تعذّر حفظ بياناتك. تأكد من اتصالك بالإنترنت ثم حاول مرة أخرى.'});
+    .then(function(){clearTimeout(tm);btn.disabled=false;btn.textContent=t('submit');next()})
+    .catch(function(){clearTimeout(tm);btn.disabled=false;btn.textContent=t('submit');try{localStorage.setItem('faheem-pending',JSON.stringify(data))}catch(e){}fe.textContent=t('e_net');setTimeout(function(){fe.textContent='';next()},1800)});
 });
+
+/* اللغة / Language */
+var lang='ar', firstName='';
+var T={
+ar:{colors:"الألوان",
+ h1:'فهيم بكالوريا<span class="h1en">FAHEEM BACCALAUREATE</span>',
+ lead:"معلمك الذكي لكل مواد أولى بكالوريا. اختر المادة، اسأل، تدرّب، وصحّح أخطاءك خطوة بخطوة وبالعربية.",
+ start:"ابدأ الآن",brand:"فهيم",
+ c1:'ما الفرق بين <span class="en">make</span> و <span class="en">do</span>؟',
+ c2:'نقول <span class="en">make a cake</span> لأننا نصنع شيئًا جديدًا، ونقول <span class="en">do homework</span> لأنه عمل نؤديه.',
+ c3:"جرّبني بجملة!",
+ f1t:"شرح بالعربية",f1d:"يبسّط القواعد والمفردات بلغة تفهمها.",
+ f2t:"تدريب مستمر",f2d:"أسئلة وتمارين على قدر مستواك.",
+ f3t:"تصحيح فوري",f3d:"يوضح الخطأ ويعطيك الصيغة الصحيحة.",
+ h2:"أنشئ حسابك",sub2:"أدخل بياناتك لتبدأ مع فهيم.",
+ l_name:"الاسم الكامل",l_age:"السن",l_grade:"الصف الدراسي",l_gov:"المحافظة",l_school:"اسم المدرسة",l_email:"البريد الإلكتروني",
+ o_grade:"أولى ثانوي",o_gov:"القاهرة",
+ consent:"أوافق على استخدام بياناتي لأغراض البحث التعليمي فقط، وعدم نشرها للغير.",
+ submit:"إنشاء الحساب",back:"رجوع",saving:"جارٍ الحفظ...",
+ h3:"تم التسجيل بنجاح",done:'أهلًا <b id="who"></b>، حسابك جاهز. اختر سنتك ومادتك للبدء مع فهيم.',pick:"اختر المادة",soon:"قريبًا",
+ e_name:"اكتب اسمك الكامل (الاسم الأول والثاني على الأقل).",e_age:"اكتب سنًا صحيحًا بين 12 و 20.",e_school:"اكتب اسم المدرسة.",
+ e_email:"اكتب بريدًا إلكترونيًا صحيحًا مثل name@example.com",e_consent:"يجب الموافقة للمتابعة.",
+ e_net:"تعذّر حفظ بياناتك. تأكد من اتصالك بالإنترنت ثم حاول مرة أخرى.",
+ title:"فهيم بكالوريا – معلمك الذكي",btn:"EN",pal:"اختر لوحة الألوان"},
+en:{colors:"Colors",
+ h1:'Faheem Baccalaureate<span class="h1en ar">فهيم بكالوريا</span>',
+ lead:"Your smart tutor for every First Baccalaureate subject. Pick a subject, ask questions, practice, and fix your mistakes step by step.",
+ start:"Get started",brand:"Faheem",
+ c1:'What is the difference between <span class="en">make</span> and <span class="en">do</span>?',
+ c2:'We say <span class="en">make a cake</span> because we create something new, and <span class="en">do homework</span> because it is a task we carry out.',
+ c3:"Test me with a sentence!",
+ f1t:"Clear explanations",f1d:"Simplifies rules and vocabulary in words you understand.",
+ f2t:"Steady practice",f2d:"Questions and exercises at your level.",
+ f3t:"Instant correction",f3d:"Shows the mistake and gives you the correct form.",
+ h2:"Create your account",sub2:"Enter your details to start with Faheem.",
+ l_name:"Full name",l_age:"Age",l_grade:"Grade",l_gov:"Governorate",l_school:"School name",l_email:"Email",
+ o_grade:"First Secondary (Baccalaureate)",o_gov:"Cairo",
+ consent:"I agree that my data is used for educational research only and is not shared with others.",
+ submit:"Create account",back:"Back",saving:"Saving...",
+ h3:"You're registered",done:'Welcome <b id="who"></b>, your account is ready. Choose your year and subject to start with Faheem.',pick:"Choose a subject",soon:"Soon",
+ e_name:"Enter your full name (first and second name at least).",e_age:"Enter a valid age between 12 and 20.",e_school:"Enter your school name.",
+ e_email:"Enter a valid email such as name@example.com",e_consent:"You must agree to continue.",
+ e_net:"Could not save your data. Check your connection and try again.",
+ title:"Faheem Baccalaureate – Your smart tutor",btn:"عربي",pal:"Choose a color palette"}
+};
+var X={ar:{i_h:"عن نظام البكالوريا المصرية",i_p:"نظام اختياري موازٍ للثانوية العامة، ولا يمكن التحويل منه إلى نظام آخر بعد الاختيار.",
+i_s1:"مواد دراسية",i_s2:"المجموع الكلي للشهادة",i_s3:"أقل نسبة للنجاح",
+st_t:"المراحل الدراسية",st_1:"الصف الأول الثانوي: سنة تمهيدية ونقل عادية.",st_2:"الصفان الثاني والثالث: المرحلة الأساسية التي تؤهل درجاتهما للقبول بالجامعات.",
+ex_t:"فرص الامتحانات",ex_1:"الصف الثاني: امتحان إجباري في مايو بدون رسوم، وآخر اختياري في يوليو بمقابل 200 جنيه للمادة.",ex_2:"الصف الثالث: امتحان إجباري في يونيو، وآخر اختياري في أغسطس بمقابل 200 جنيه للمادة.",
+q_t:"شكل الأسئلة",q_1:"تبدأ امتحانات الصفين الثاني والثالث بنظام 50% اختيار من متعدد و50% أسئلة مقالية.",
+tr_h:"المسارات في الصف الثالث الثانوي",
+tr1t:"الطب وعلوم الحياة",tr1d:"أحياء مستوى متقدم + كيمياء مستوى متقدم",
+tr2t:"الهندسة وعلوم الحاسب",tr2d:"رياضيات مستوى متقدم + فيزياء مستوى متقدم",
+tr3t:"الأعمال",tr3d:"اقتصاد مستوى متقدم + رياضيات",
+tr4t:"الآداب والفنون",tr4d:"جغرافيا مستوى متقدم + إحصاء",
+i_note:"المعلومات حسب ما نُشر إعلاميًا وقد تتغير، فراجع إعلانات وزارة التربية والتعليم."},
+en:{i_h:"About the Egyptian Baccalaureate",i_p:"An optional system that runs in parallel with Thanaweya Amma. Once you choose it, you cannot switch to another system.",
+i_s1:"school subjects",i_s2:"total certificate score",i_s3:"minimum to pass",
+st_t:"Stages",st_1:"First Secondary: a preparatory year with regular promotion.",st_2:"Second and Third Secondary: the core stage whose scores count toward university admission.",
+ex_t:"Exam chances",ex_1:"Second year: a compulsory exam in May (free) and an optional one in July (EGP 200 per subject).",ex_2:"Third year: a compulsory exam in June and an optional one in August (EGP 200 per subject).",
+q_t:"Question format",q_1:"Second and Third Secondary exams start with 50% multiple-choice and 50% essay questions.",
+tr_h:"Tracks in Third Secondary",
+tr1t:"Medicine & Life Sciences",tr1d:"Advanced Biology + Advanced Chemistry",
+tr2t:"Engineering & Computer Science",tr2d:"Advanced Mathematics + Advanced Physics",
+tr3t:"Business",tr3d:"Advanced Economics + Mathematics",
+tr4t:"Arts & Humanities",tr4d:"Advanced Geography + Statistics",
+i_note:"Information as reported in the media and may change. Check the Ministry of Education announcements."}};
+X.ar.pick_y="اختر السنة";X.ar.pick_t="اختر المسار";X.ar.all="كل المسارات";X.ar.adv="مستوى متقدم";
+X.ar.y1="أولى ثانوي";X.ar.y2="ثانية ثانوي";X.ar.y3="ثالثة ثانوي";X.ar.o_g1="أولى ثانوي";X.ar.o_g2="ثانية ثانوي";X.ar.o_g3="ثالثة ثانوي";
+X.en.pick_y="Choose your year";X.en.pick_t="Choose your track";X.en.all="All tracks";X.en.adv="Advanced level";
+X.en.y1="First Secondary";X.en.y2="Second Secondary";X.en.y3="Third Secondary";X.en.o_g1="First Secondary";X.en.o_g2="Second Secondary";X.en.o_g3="Third Secondary";
+X.ar.tr_h="المسارات في الصفين الثاني والثالث الثانوي";X.en.tr_h="Tracks in Second and Third Secondary";
+X.ar.g_core="مواد أساسية تدخل في المجموع";X.ar.g_out="مواد خارج المجموع";X.ar.g_pick="مادة التخصص";X.ar.g_spec="مواد التخصص (تدخل في المجموع)";
+X.ar.n_out="نجاح ورسوب";X.ar.n_pick="اختر مادة واحدة";X.ar.n_rel="نجاح ورسوب (70%)";
+X.en.g_core="Core subjects (count toward the total)";X.en.g_out="Subjects outside the total";X.en.g_pick="Specialization subject";X.en.g_spec="Specialization subjects (count toward the total)";
+X.en.n_out="Pass / fail";X.en.n_pick="Choose one";X.en.n_rel="Pass / fail (70%)";
+X.ar.tr1d="الثاني: الرياضيات أو الفيزياء. الثالث: أحياء + كيمياء (متقدم)";X.en.tr1d="Year 2: Mathematics or Physics. Year 3: Biology + Chemistry (Advanced)";
+X.ar.tr2d="الثاني: الكيمياء أو البرمجة والذكاء الاصطناعي. الثالث: رياضيات + فيزياء (متقدم)";X.en.tr2d="Year 2: Chemistry or Programming & AI. Year 3: Mathematics + Physics (Advanced)";
+X.ar.tr3d="الثاني: المحاسبة أو إدارة الأعمال. الثالث: اقتصاد (متقدم) + رياضيات";X.en.tr3d="Year 2: Accounting or Business Administration. Year 3: Economics (Advanced) + Mathematics";
+X.ar.tr4d="الثاني: علم النفس أو اللغة الأجنبية الثانية. الثالث: جغرافيا (متقدم) + إحصاء";X.en.tr4d="Year 2: Psychology or Second Foreign Language. Year 3: Geography (Advanced) + Statistics";
+X.ar.st_1="الصف الأول الثانوي: سنة تمهيدية بـ 6 مواد تدخل في المجموع وثلاث مواد خارجه.";X.en.st_1="First Secondary: a preparatory year with 6 subjects counting toward the total and 3 outside it.";
+Object.assign(T.ar,X.ar);Object.assign(T.en,X.en);
+function t(k){return T[lang][k]}
+function applyLang(){
+  var r=document.documentElement;
+  r.lang=lang; r.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){el.innerHTML=t(el.dataset.i18n)});
+  var w=document.getElementById('who'); if(w) w.textContent=firstName;
+  document.title=t('title');
+  var lb=document.getElementById('lang'); lb.textContent=t('btn'); lb.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
+  document.querySelector('.pal').setAttribute('aria-label',t('pal'));
+  document.querySelectorAll('.err').forEach(function(e){e.textContent=''});
+  document.querySelectorAll('input.bad').forEach(function(e){e.classList.remove('bad')});
+  renderAll();
+  try{localStorage.setItem('faheem-lang',lang)}catch(e){}
+}
+try{lang=localStorage.getItem('faheem-lang')||'ar'}catch(e){}
+document.getElementById('lang').addEventListener('click',function(){lang=lang==='ar'?'en':'ar';applyLang()});
+applyLang();
 </script>
 </body>
 </html>
